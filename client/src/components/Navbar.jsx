@@ -1,8 +1,9 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { NavLink } from "react-router";
 
 const Navbar = () => {
-    const activeLink = 'Home';
+    //const activeLink = 'Home';
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,38 +21,38 @@ const Navbar = () => {
                     {/* Desktop Navigation */}
                     <nav className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
-                            <a
-                                href='/'
+                            <NavLink
+                                to='/'
 
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${activeLink === 'Home'
+                                className={({ isActive }) => `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${isActive
                                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                                     }`}
                             >
                                 Home
-                            </a>
+                            </NavLink>
 
-                            <a
-                                href='/about'
+                            <NavLink
+                                to='/about'
 
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${activeLink === 'About'
+                                className={({ isActive }) => `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${isActive
                                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                                     }`}
                             >
                                 About
-                            </a>
+                            </NavLink>
 
-                            <a
-                                href='/person'
+                            <NavLink
+                                to='/person'
 
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${activeLink === 'Person'
+                                className={({ isActive }) => `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${isActive 
                                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                                     }`}
                             >
                                 Person
-                            </a>
+                            </NavLink>
                         </div>
                     </nav>
 
@@ -81,35 +82,35 @@ const Navbar = () => {
                     }`}
             >
                 <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-50 border-t border-gray-200">
-                    <a
-                        href="/"
-                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${activeLink === 'Home'
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${isActive
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md transform scale-105'
                             : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm'
                             }`}
                     >
                         Home
-                    </a>
+                    </NavLink>
 
-                    <a
-                        href="/about"
-                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${activeLink === 'About'
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${isActive
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md transform scale-105'
                             : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm'
                             }`}
                     >
                         About
-                    </a>
+                    </NavLink>
 
-                    <a
-                        href="/person"
-                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${activeLink === 'Person'
+                    <NavLink
+                        to="/person"
+                        className={({ isActive }) => `block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${isActive
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md transform scale-105'
                             : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm'
                             }`}
                     >
                         Person
-                    </a>
+                    </NavLink>
                 </div>
             </div>
 
