@@ -9,7 +9,6 @@ import axios from "axios";
 function Person() {
   const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 
-
   const [people, setPeople] = useState([]);
 
   const [editData,  setEditData] = useState(null);
@@ -22,7 +21,7 @@ function Person() {
       }
 
       loadPeople();
-      
+
     }catch(error){
       console.log(error);
       toast.error("Error has occured!");
