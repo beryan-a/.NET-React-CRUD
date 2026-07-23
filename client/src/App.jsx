@@ -4,11 +4,11 @@ import { Routes, Route } from "react-router";
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
-import { Person } from './components/person/Person';
+import  Person  from './components/person/Person';
 import './App.css'
 
 function App() {
-  
+
   return (
     <>
       {/* Navigation */}
