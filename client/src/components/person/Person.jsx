@@ -4,7 +4,10 @@ import PersonList from "./PersonList"
 function Person() {
 
   const _people = [
-    
+    {id:1, firstName: 'John', lastName: 'Doe'},
+    {id:2, firstName: 'Micheal', lastName: 'Scott'},
+    {id:3, firstName: 'Pam', lastName: 'Beesly'},
+    {id:4, firstName: 'Ryan', lastName: 'Howard'},
   ]
 
   //FUNCTIONS

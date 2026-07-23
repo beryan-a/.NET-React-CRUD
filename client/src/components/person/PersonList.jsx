@@ -1,7 +1,7 @@
 import { Edit, Trash2 } from 'lucide-react';
 
 const PersonList = ({ people, onPersonEdit, onPersonDelete}) => { //people=prop
-    if(!people.lenght || people.lenght === 0){
+    if(!people || people.lenght === 0){
         //in case there is no people entered
         return(
             <div className="text-center py-8 text-gray-500">
