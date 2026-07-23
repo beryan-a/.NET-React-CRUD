@@ -42,6 +42,12 @@ const PersonForm = () => {
                         {errors.firstName?.type === 'required' && <p className="mt-1 text-sm text-red-600 flex items-center">
                             FirstName required
                         </p>}
+
+                        {errors.firstName?.type === 'maxLength' && <p className="mt-1 text-sm text-red-600 flex items-center">
+                            FirstName can not exceed 30 characters
+                        </p>}
+
+
                     </div>
 
                     <div className="flex-1">
@@ -61,8 +67,12 @@ const PersonForm = () => {
                         />
 
                         {errors.lastName?.type === 'required' && <p className="mt-1 text-sm text-red-600 flex items-center">
-                            LastName required
-                        </p>} 
+                            LastName is required
+                        </p>}
+
+                        {errors.lastName?.type === 'maxLength' && <p className="mt-1 text-sm text-red-600 flex items-center">
+                            LastName can not exceed 30 characters
+                        </p>}
                     </div>
                 </div>
 
