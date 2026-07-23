@@ -1,27 +1,42 @@
 import PersonForm from "./PersonForm"
 import PersonList from "./PersonList"
 import {useForm} from "react-hook-form";
+import { useState } from "react";
 
 
 function Person() {
-  const defaultFormValues = {
-      id:0,
-      firstName: '',
-      lastName: ''
-  }
-
-  const _methods = useForm({
-    defaultValues: defaultFormValues
-  });
-
-  const _people = [
+const people = [
     {id:1, firstName: 'John', lastName: 'Doe'},
     {id:2, firstName: 'Micheal', lastName: 'Scott'},
     {id:3, firstName: 'Pam', lastName: 'Beesly'},
     {id:4, firstName: 'Ryan', lastName: 'Howard'},
   ]
 
+  const [editData,  setEditData] = useState(null);
+
+
+
+  const defaultFormValues = {
+      id:0,
+      firstName: '',
+      lastName: ''
+  }
+
+  const methods = useForm({
+    defaultValues: defaultFormValues
+  });
+
+
   //FUNCTIONS
+  const handleFormSubmit = (data) => {
+      console.log(data);
+
+  }
+
+  const handleFormReset = () => {
+    methods.reset(defaultFormValues);
+  }
+
   const handlePersonEdit = (person) => {
     console.log(person);
   }
@@ -45,8 +60,8 @@ function Person() {
 
                 </div>
 
-                <PersonForm methods={_methods}/>
-                <PersonList people= {_people} onPersonEdit={handlePersonEdit} onPersonDelete={handlePersonDelete}/>
+                <PersonForm methods={methods} onFormSubmit={handleFormSubmit} onFormReset={handleFormReset}/>
+                <PersonList people= {people} onPersonEdit={handlePersonEdit} onPersonDelete={handlePersonDelete}/>
             </div>
         </div>
     )
