@@ -1,6 +1,16 @@
 import { Edit, Trash2 } from 'lucide-react';
 
 const PersonList = ({ people, onPersonEdit, onPersonDelete}) => { //people=prop
+    if(!people.lenght || people.lenght === 0){
+        //in case there is no people entered
+        return(
+            <div className="text-center py-8 text-gray-500">
+                <p className="text-lg font-medium">No people found</p>
+                <p className="text-sm">Add some people using the form above.</p>
+            </div>     
+        )
+    }
+
     return (
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="overflow-x-auto">
@@ -52,16 +62,6 @@ const PersonList = ({ people, onPersonEdit, onPersonDelete}) => { //people=prop
                         </tr>)}
                     </tbody>
                 </table>
-
-                {/* No data */}
-                {people.length <1  &&
-                <div className="text-center py-8 text-gray-500">
-                    <p className="text-lg font-medium">No people found</p>
-                    <p className="text-sm">Add some people using the form above.</p>
-                </div>
-                }
-                
-
             </div>
         </div>
     );
