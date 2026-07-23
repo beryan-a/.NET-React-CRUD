@@ -1,7 +1,6 @@
 import { Save, RotateCcw } from 'lucide-react';
 
 const PersonForm = ({ methods, onFormReset, onFormSubmit }) => {
-    
     const {
         register,
         handleSubmit,

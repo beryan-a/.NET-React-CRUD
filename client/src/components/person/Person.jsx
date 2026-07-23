@@ -1,20 +1,40 @@
 import PersonForm from "./PersonForm"
 import PersonList from "./PersonList"
 import {useForm} from "react-hook-form";
-import { useState } from "react";
+import { useState , useEffect } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 
 function Person() {
-const people = [
-    {id:1, firstName: 'John', lastName: 'Doe'},
-    {id:2, firstName: 'Micheal', lastName: 'Scott'},
-    {id:3, firstName: 'Pam', lastName: 'Beesly'},
-    {id:4, firstName: 'Ryan', lastName: 'Howard'},
-  ]
+  const BASE_URL = import.meta.env.VITE_BASE_API_URL;
+
+
+  const [people, setPeople] = useState([]);
 
   const [editData,  setEditData] = useState(null);
 
+  useEffect(() => {
+    try{
+      const loadPeople = async () => {
+        var peopleData = (await axios.get(BASE_URL)).data;
+        setPeople(peopleData);
+      }
 
+      loadPeople();
+      
+    }catch(error){
+      console.log(error);
+      toast.error("Error has occured!");
+    }
+    finally{
+
+    }
+  },[]);
+
+  useEffect((person)=>{
+    methods.reset(editData);
+  }, [editData])
 
   const defaultFormValues = {
       id:0,
@@ -28,9 +48,24 @@ const people = [
 
 
   //FUNCTIONS
-  const handleFormSubmit = (data) => {
-      console.log(data);
+  const handleFormSubmit = (person) => {
+    try{
+        if(person.id <= 0){
+        console.log("add");
+        setPeople((previousPerson) => [...previousPerson, person]);
+      }else{
+        console.log("edit");
+        setPeople((previousPeople) => previousPeople.map(p => p.id === person.id ? person : p));
+      }
+      methods.reset(defaultFormValues);
+      toast.success("saved successfully!");
 
+    }catch(error){
+      toast.error("Error has occured!");
+    }
+    finally{
+
+    }
   }
 
   const handleFormReset = () => {
@@ -38,17 +73,19 @@ const people = [
   }
 
   const handlePersonEdit = (person) => {
-    console.log(person);
+    setEditData(person);
   }
 
   const handlePersonDelete = (person) => {
     if(!confirm(`Are you sure to delete a person : ${person.firstName} ${person.lastName}`)) return;
-    console.log(person);
+
+    try{
+      setPeople((previousPerson) => previousPerson.filter(p=> p.id !== person.id));
+      toast.success("Deleted successfully!");
+    }catch(error){
+      toast.error("Error on deleting!");
+    }
   }
-
-
-
-
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">

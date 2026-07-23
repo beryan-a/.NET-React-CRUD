@@ -5,6 +5,8 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
 import  Person  from './components/person/Person';
+import { Toaster } from 'react-hot-toast';
+
 import './App.css'
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path="" element={<NotFound/>}/>
       </Routes>
 
+
+      <Toaster />
     </>
     
   )
