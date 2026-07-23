@@ -4,11 +4,22 @@ import PersonList from "./PersonList"
 function Person() {
 
   const _people = [
-    {id:1, firstName: 'John', lastName: 'Doe'},
-    {id:2, firstName: 'Micheal', lastName: 'Scott'},
-    {id:3, firstName: 'Pam', lastName: 'Beesly'},
-    {id:4, firstName: 'Ryan', lastName: 'Howard'},
+    
   ]
+
+  //FUNCTIONS
+  const handlePersonEdit = (person) => {
+    console.log(person);
+  }
+
+  const handlePersonDelete = (person) => {
+    if(!confirm(`Are you sure to delete a person : ${person.firstName} ${person.lastName}`)) return;
+    console.log(person);
+  }
+
+
+
+
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">
@@ -21,7 +32,7 @@ function Person() {
                 </div>
 
                 <PersonForm />
-                <PersonList people= {_people}/>
+                <PersonList people= {_people}onPersonEdit={handlePersonEdit} onPersonDelete={handlePersonDelete}/>
             </div>
         </div>
     )
